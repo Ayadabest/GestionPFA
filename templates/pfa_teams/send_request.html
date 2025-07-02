@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Rechercher un binôme{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Rechercher un binôme</h2>
+                </div>
+                <div class="card-body">
+                    {% if available_students %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="receiver" class="form-label">Sélectionner un étudiant</label>
+                            <select name="receiver" id="receiver" class="form-select" required>
+                                <option value="">Choisir un étudiant...</option>
+                                {% for student in available_students %}
+                                <option value="{{ student.id }}">
+                                    {{ student.get_full_name }} - {{ student.department }}
+                                    {% if student.cne %}(CNE: {{ student.cne }}){% endif %}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message (optionnel)</label>
+                            <textarea name="message" id="message" class="form-control" rows="4" 
+                                    placeholder="Écrivez un message pour expliquer votre motivation..."></textarea>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                Envoyer la demande
+                            </button>
+                            <a href="{% url 'pfa_teams:team_list' %}" class="btn btn-secondary">
+                                Annuler
+                            </a>
+                        </div>
+                    </form>
+                    {% else %}
+                    <div class="alert alert-info">
+                        <h4 class="alert-heading">Aucun étudiant disponible</h4>
+                        <p>Il n'y a actuellement aucun étudiant disponible pour former un binôme. Cela peut être dû aux raisons suivantes :</p>
+                        <ul>
+                            <li>Tous les étudiants ont déjà un binôme</li>
+                            <li>Vous êtes le seul étudiant dans votre département</li>
+                            <li>Les autres étudiants n'ont pas encore activé leur compte</li>
+                        </ul>
+                        <hr>
+                        <p class="mb-0">
+                            <a href="{% url 'pfa_teams:team_list' %}" class="alert-link">
+                                Retourner à la liste des équipes
+                            </a>
+                        </p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

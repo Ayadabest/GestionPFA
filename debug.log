@@ -1,0 +1,2081 @@
+Watching for file changes with StatReloader
+C:\Users\msi\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\msi\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\msi\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/?next=/ HTTP/1.1" 200 3983
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"POST /login/?next=/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+SQL pour total_students: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."username", "users_user"."first_name", "users_user"."last_name", "users_user"."email", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."role", "users_user"."cne", "users_user"."matricule", "users_user"."department", "users_user"."profile_picture", "users_user"."skills", "users_user"."availability" FROM "users_user" WHERE "users_user"."role" = student
+SQL pour students_with_team: SELECT "pfa_teams_team_members"."user_id" AS "members" FROM "pfa_teams_team" LEFT OUTER JOIN "pfa_teams_team_members" ON ("pfa_teams_team"."id" = "pfa_teams_team_members"."team_id")
+SQL pour students_with_project: SELECT "pfa_teams_team_members"."user_id" AS "members" FROM "pfa_teams_team" LEFT OUTER JOIN "pfa_teams_team_members" ON ("pfa_teams_team"."id" = "pfa_teams_team_members"."team_id") WHERE ("pfa_teams_team"."project_id" IS NOT NULL AND "pfa_teams_team"."status" = approved)
+Total students: 4
+Students with team: 4
+Students with project: 0
+Final stats for chart: {'total_students': 4, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_with_team_and_project': 0, 'students_with_team_no_project': 4, 'students_without_team': 0}
+Context keys: dict_keys(['projects', 'teams', 'pending_team_requests', 'students_without_teams', 'teams_without_projects', 'stats'])
+Stats in context: {'total_students': 4, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_with_team_and_project': 0, 'students_with_team_no_project': 4, 'students_without_team': 0}
+"GET / HTTP/1.1" 200 22896
+"GET /projects/ HTTP/1.1" 200 12479
+User role: admin
+User is_superuser: True
+User is_staff: True
+SQL pour total_students: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."username", "users_user"."first_name", "users_user"."last_name", "users_user"."email", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."role", "users_user"."cne", "users_user"."matricule", "users_user"."department", "users_user"."profile_picture", "users_user"."skills", "users_user"."availability" FROM "users_user" WHERE "users_user"."role" = student
+SQL pour students_with_team: SELECT "pfa_teams_team_members"."user_id" AS "members" FROM "pfa_teams_team" LEFT OUTER JOIN "pfa_teams_team_members" ON ("pfa_teams_team"."id" = "pfa_teams_team_members"."team_id")
+SQL pour students_with_project: SELECT "pfa_teams_team_members"."user_id" AS "members" FROM "pfa_teams_team" LEFT OUTER JOIN "pfa_teams_team_members" ON ("pfa_teams_team"."id" = "pfa_teams_team_members"."team_id") WHERE ("pfa_teams_team"."project_id" IS NOT NULL AND "pfa_teams_team"."status" = approved)
+Total students: 4
+Students with team: 4
+Students with project: 0
+Final stats for chart: {'total_students': 4, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_with_team_and_project': 0, 'students_with_team_no_project': 4, 'students_without_team': 0}
+Context keys: dict_keys(['projects', 'teams', 'pending_team_requests', 'students_without_teams', 'teams_without_projects', 'stats'])
+Stats in context: {'total_students': 4, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_with_team_and_project': 0, 'students_with_team_no_project': 4, 'students_without_team': 0}
+"GET / HTTP/1.1" 200 22601
+"GET /teams/ HTTP/1.1" 200 7634
+"GET /teams/2/ HTTP/1.1" 200 7887
+"POST /teams/2/approve/ HTTP/1.1" 302 0
+"GET /teams/ HTTP/1.1" 200 7961
+User role: admin
+User is_superuser: True
+User is_staff: True
+SQL pour total_students: SELECT "users_user"."id", "users_user"."password", "users_user"."last_login", "users_user"."is_superuser", "users_user"."username", "users_user"."first_name", "users_user"."last_name", "users_user"."email", "users_user"."is_staff", "users_user"."is_active", "users_user"."date_joined", "users_user"."role", "users_user"."cne", "users_user"."matricule", "users_user"."department", "users_user"."profile_picture", "users_user"."skills", "users_user"."availability" FROM "users_user" WHERE "users_user"."role" = student
+SQL pour students_with_team: SELECT "pfa_teams_team_members"."user_id" AS "members" FROM "pfa_teams_team" LEFT OUTER JOIN "pfa_teams_team_members" ON ("pfa_teams_team"."id" = "pfa_teams_team_members"."team_id")
+SQL pour students_with_project: SELECT "pfa_teams_team_members"."user_id" AS "members" FROM "pfa_teams_team" LEFT OUTER JOIN "pfa_teams_team_members" ON ("pfa_teams_team"."id" = "pfa_teams_team_members"."team_id") WHERE ("pfa_teams_team"."project_id" IS NOT NULL AND "pfa_teams_team"."status" = approved)
+Total students: 4
+Students with team: 4
+Students with project: 2
+Final stats for chart: {'total_students': 4, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_with_team_and_project': 2, 'students_with_team_no_project': 2, 'students_without_team': 0}
+Context keys: dict_keys(['projects', 'teams', 'pending_team_requests', 'students_without_teams', 'teams_without_projects', 'stats'])
+Stats in context: {'total_students': 4, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_with_team_and_project': 2, 'students_with_team_no_project': 2, 'students_without_team': 0}
+"GET / HTTP/1.1" 200 22600
+C:\Users\msi\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 20
+Students with requests: 0
+Students without requests: 20
+Final stats for chart: {'total_students': 20, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_with_requests': 0, 'students_without_requests': 20}
+Context keys: dict_keys(['projects', 'teams', 'pending_team_requests', 'stats'])
+Stats in context: {'total_students': 20, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_with_requests': 0, 'students_without_requests': 20}
+"GET / HTTP/1.1" 200 22096
+"GET /static/css/custom.css HTTP/1.1" 304 0
+C:\Users\msi\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /projects/ HTTP/1.1" 200 12478
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"GET /projects/ HTTP/1.1" 200 12478
+"GET /projects/ HTTP/1.1" 200 12478
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 40
+Students with accepted requests: 2
+Students with pending requests: 0
+Students without requests: 38
+Final stats for chart: {'total_students': 40, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_accepted': 2, 'students_pending': 0, 'students_without_requests': 38}
+"GET / HTTP/1.1" 200 22516
+C:\Users\msi\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 40
+Students with accepted requests: 2
+Students with pending requests: 0
+Students without requests: 38
+Final stats for chart: {'total_students': 40, 'total_teachers': 2, 'total_teams': 2, 'total_projects': 3, 'pending_requests': 0, 'students_accepted': 2, 'students_pending': 0, 'students_without_requests': 38}
+"GET / HTTP/1.1" 200 72785
+"GET /static/css/custom.css HTTP/1.1" 304 0
+Notification request from user: admin (role: admin)
+Notification request from user: admin (role: admin)
+Notification data: {'student_id': '16', 'type': 'team'}
+Notification data: {'student_id': '16', 'type': 'team'}
+Sending email to: etud3@pfa.com
+Sending email to: etud3@pfa.com
+Email sent successfully
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"GET /teams/3/ HTTP/1.1" 302 0
+"GET /login/?next=/teams/3/ HTTP/1.1" 200 3983
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"POST /login/?next=/teams/3/ HTTP/1.1" 200 4868
+C:\Users\msi\PFA2\users\models.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /login/?next=/teams/3/ HTTP/1.1" 200 4868
+"POST /login/?next=/teams/3/ HTTP/1.1" 200 4868
+"POST /login/?next=/teams/3/ HTTP/1.1" 200 4868
+"POST /login/?next=/teams/3/ HTTP/1.1" 302 0
+Not Found: /teams/3/
+"GET /teams/3/ HTTP/1.1" 404 7565
+Forbidden (CSRF token from POST incorrect.): /login/
+"POST /login/?next=/teams/3/ HTTP/1.1" 403 2526
+User role: student
+User is_superuser: True
+User is_staff: True
+"GET / HTTP/1.1" 200 21116
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4609
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: True
+User is_staff: True
+"GET / HTTP/1.1" 200 21332
+User role: student
+User is_superuser: True
+User is_staff: True
+"GET / HTTP/1.1" 200 20719
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 10
+Students with pending requests: 0
+Students without requests: 11
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 10, 'students_pending': 0, 'students_without_requests': 11}
+"GET / HTTP/1.1" 200 48852
+"GET /profile/ HTTP/1.1" 200 5667
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4609
+"POST /login/ HTTP/1.1" 200 4873
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21152
+Forbidden (CSRF token from POST incorrect.): /logout/
+"POST /logout/ HTTP/1.1" 403 2526
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 20846
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 20846
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 20846
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 20846
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 20846
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4609
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 10
+Students with pending requests: 0
+Students without requests: 11
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 10, 'students_pending': 0, 'students_without_requests': 11}
+"GET / HTTP/1.1" 200 49147
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"GET /teams/5/ HTTP/1.1" 200 7920
+"POST /teams/5/approve/ HTTP/1.1" 302 0
+"GET /teams/ HTTP/1.1" 200 16468
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45934
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4609
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 20294
+C:\Users\msi\PFA2\pfa_teams\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\msi\PFA2\pfa_teams\forms.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\msi\PFA2\pfa_teams\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\msi\PFA2\pfa_teams\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\msi\PFA2\pfa_teams\admin.py changed, reloading.
+Watching for file changes with StatReloader
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 19988
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"GET /teams/ HTTP/1.1" 200 6371
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 19988
+"GET /projects/ HTTP/1.1" 200 10628
+"GET /teams/ HTTP/1.1" 200 6371
+"GET /teams/5/ HTTP/1.1" 200 6999
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 19988
+C:\Users\msi\PFA2\pfa_teams\urls.py changed, reloading.
+Watching for file changes with StatReloader
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 19988
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4609
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 20294
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 19988
+"GET /projects/ HTTP/1.1" 200 10628
+"GET /teams/ HTTP/1.1" 200 6371
+"GET /teams/5/ HTTP/1.1" 200 6999
+C:\Users\msi\PFA2\pfa_teams\models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /teams/5/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\msi\PFA2\pfa_teams\views.py", line 70, in team_detail
+    return render(request, 'pfa_teams/team_detail.html', {
+        'team': team,
+        'history': history,
+        'subject_choices': subject_choices
+    })
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1540, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1537, in do_with
+    raise TemplateSyntaxError(
+        "%r received an invalid token: %r" % (bits[0], remaining_bits[0])
+    )
+django.template.exceptions.TemplateSyntaxError: 'with' received an invalid token: 'user'
+"GET /teams/5/ HTTP/1.1" 500 266425
+Internal Server Error: /teams/5/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\msi\PFA2\pfa_teams\views.py", line 70, in team_detail
+    return render(request, 'pfa_teams/team_detail.html', {
+        'team': team,
+        'history': history,
+        'subject_choices': subject_choices
+    })
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1540, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1537, in do_with
+    raise TemplateSyntaxError(
+        "%r received an invalid token: %r" % (bits[0], remaining_bits[0])
+    )
+django.template.exceptions.TemplateSyntaxError: 'with' received an invalid token: 'request.user'
+"GET /teams/5/ HTTP/1.1" 500 266499
+Internal Server Error: /teams/5/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\msi\PFA2\pfa_teams\views.py", line 70, in team_detail
+    return render(request, 'pfa_teams/team_detail.html', {
+        'team': team,
+        'history': history,
+        'subject_choices': subject_choices
+    })
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1540, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1537, in do_with
+    raise TemplateSyntaxError(
+        "%r received an invalid token: %r" % (bits[0], remaining_bits[0])
+    )
+django.template.exceptions.TemplateSyntaxError: 'with' received an invalid token: 'request.user'
+"GET /teams/5/ HTTP/1.1" 500 266499
+Internal Server Error: /teams/5/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\msi\PFA2\pfa_teams\views.py", line 70, in team_detail
+    return render(request, 'pfa_teams/team_detail.html', {
+        'team': team,
+        'history': history,
+        'subject_choices': subject_choices
+    })
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1540, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1537, in do_with
+    raise TemplateSyntaxError(
+        "%r received an invalid token: %r" % (bits[0], remaining_bits[0])
+    )
+django.template.exceptions.TemplateSyntaxError: 'with' received an invalid token: 'request.user'
+"GET /teams/5/ HTTP/1.1" 500 266499
+Watching for file changes with StatReloader
+User role: student
+User is_superuser: False
+User is_staff: False
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\msi\PFA2\users\views.py", line 153, in dashboard
+    return render(request, 'users/dashboard.html', context)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1540, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\template\defaulttags.py", line 1537, in do_with
+    raise TemplateSyntaxError(
+        "%r received an invalid token: %r" % (bits[0], remaining_bits[0])
+    )
+django.template.exceptions.TemplateSyntaxError: 'with' received an invalid token: 'request.user'
+"GET / HTTP/1.1" 500 269783
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21258
+"GET /static/css/custom.css HTTP/1.1" 304 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21258
+"GET /teams/5/reports/ HTTP/1.1" 200 6000
+"GET /teams/5/submit-report/ HTTP/1.1" 200 7520
+Internal Server Error: /teams/5/messages/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\msi\PFA2\pfa_teams\views.py", line 380, in team_messages
+    if request.user != team.supervisor:
+                       ^^^^^^^^^^^^^^^
+AttributeError: 'Team' object has no attribute 'supervisor'
+"GET /teams/5/messages/ HTTP/1.1" 500 73466
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21258
+"GET /static/css/custom.css HTTP/1.1" 304 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21258
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4608
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45812
+"GET /teams/6/ HTTP/1.1" 200 7495
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45517
+"GET /admin/ HTTP/1.1" 200 12942
+"GET /teams/10/ HTTP/1.1" 200 7508
+Watching for file changes with StatReloader
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45517
+"GET /static/css/custom.css HTTP/1.1" 304 0
+"GET /static/images/emsi-logo.png HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5427
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '21', 'type': 'team'}
+Sending email to: a.alami23@emi.ac.ma
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '27', 'type': 'team'}
+Notification request from user: aya (role: admin)
+Sending email to: h.idrissi23@emi.ac.ma
+Notification data: {'student_id': '30', 'type': 'team'}
+Notification request from user: aya (role: admin)
+Notification request from user: aya (role: admin)
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '32', 'type': 'team'}
+Notification data: {'student_id': '29', 'type': 'team'}
+Sending email to: a.lahlou22@emi.ac.ma
+Notification data: {'student_id': '34', 'type': 'team'}
+Sending email to: m.karimi23@emi.ac.ma
+Sending email to: h.najjar22@emi.ac.ma
+Sending email to: s.qabbaj22@emi.ac.ma
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Email sent successfully
+Email sent successfully
+Email sent successfully
+Email sent successfully
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '37', 'type': 'team'}
+Sending email to: h.tazi23@emi.ac.ma
+Notification request from user: aya (role: admin)
+Email sent successfully
+Notification data: {'student_id': '38', 'type': 'team'}
+Notification request from user: aya (role: admin)
+Notification request from user: aya (role: admin)
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Notification data: {'student_id': '27', 'type': 'team'}
+Notification request from user: aya (role: admin)
+Notification request from user: aya (role: admin)
+Sending email to: m.wahbi22@emi.ac.ma
+Notification data: {'student_id': '21', 'type': 'team'}
+Notification data: {'student_id': '29', 'type': 'team'}
+Sending email to: h.idrissi23@emi.ac.ma
+Notification data: {'student_id': '40', 'type': 'team'}
+Sending email to: a.alami23@emi.ac.ma
+Email sent successfully
+Sending email to: m.karimi23@emi.ac.ma
+Notification request from user: aya (role: admin)
+Email sent successfully
+Sending email to: s.bennani22@emi.ac.ma
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Email sent successfully
+Notification data: {'student_id': '30', 'type': 'team'}
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Sending email to: a.lahlou22@emi.ac.ma
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Notification request from user: aya (role: admin)
+Email sent successfully
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '32', 'type': 'team'}
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Notification data: {'student_id': '34', 'type': 'team'}
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '37', 'type': 'team'}
+Sending email to: h.najjar22@emi.ac.ma
+Sending email to: s.qabbaj22@emi.ac.ma
+Sending email to: h.tazi23@emi.ac.ma
+Notification request from user: aya (role: admin)
+Email sent successfully
+Notification data: {'student_id': '40', 'type': 'team'}
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Email sent successfully
+Sending email to: s.bennani22@emi.ac.ma
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Email sent successfully
+Notification request from user: aya (role: admin)
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Notification data: {'student_id': '38', 'type': 'team'}
+Sending email to: m.wahbi22@emi.ac.ma
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4608
+"POST /login/ HTTP/1.1" 200 4873
+"POST /login/ HTTP/1.1" 200 4873
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45812
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45517
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45517
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45517
+"GET /admin/ HTTP/1.1" 200 12942
+"GET /admin/users/user/ HTTP/1.1" 200 29792
+"GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+"GET /static/admin/js/actions.js HTTP/1.1" 304 0
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+"GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+"GET /static/admin/js/core.js HTTP/1.1" 304 0
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+"GET /static/admin/img/search.svg HTTP/1.1" 304 0
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 8634
+"GET /static/admin/js/filters.js HTTP/1.1" 304 0
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+"POST /admin/logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 3982
+"POST /login/ HTTP/1.1" 200 4871
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/?next=/ HTTP/1.1" 200 3982
+"GET /static/css/custom.css HTTP/1.1" 200 4248
+"GET /static/images/emsi-logo.png HTTP/1.1" 200 42389
+"POST /login/?next=/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45812
+F:\PFA2\pfa_teams\views.py changed, reloading.
+Watching for file changes with StatReloader
+F:\PFA2\pfa_projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+F:\PFA2\pfa_projects\models.py changed, reloading.
+Watching for file changes with StatReloader
+F:\PFA2\pfa_projects\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 1, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45517
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4608
+"POST /login/ HTTP/1.1" 302 0
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 34397
+"GET /projects/1/ HTTP/1.1" 200 5386
+"GET /teams/?project_id=1 HTTP/1.1" 200 6128
+F:\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+F:\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 30688
+"GET /projects/1/ HTTP/1.1" 200 5386
+"GET /profile/ HTTP/1.1" 200 7722
+"GET /projects/ HTTP/1.1" 200 11937
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4608
+"POST /login/ HTTP/1.1" 302 0
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 17686
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 17372
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 23986
+"GET /projects/1/ HTTP/1.1" 200 5398
+"GET /projects/ HTTP/1.1" 200 8840
+"GET /projects/ HTTP/1.1" 200 8840
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 23986
+"GET /projects/1/ HTTP/1.1" 200 5398
+Watching for file changes with StatReloader
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 23986
+"GET /profile/ HTTP/1.1" 200 6775
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 4608
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\PFA2\users\views.py", line 192, in login_view
+    return render(request, 'users/login.html', {
+        'form': form,
+        'title': 'Connexion'
+    })
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\adame\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 13: 'static', expected 'endblock'. Did you forget to register or load this tag?
+"GET /login/ HTTP/1.1" 500 187905
+"GET /login/ HTTP/1.1" 200 4825
+"GET /static/img/emsi-logo.png HTTP/1.1" 200 42389
+"GET /static/img/login-bg.jpg HTTP/1.1" 200 1
+"GET /login/ HTTP/1.1" 200 4825
+"GET /static/img/login-bg.jpg HTTP/1.1" 304 0
+"GET /login/ HTTP/1.1" 200 4825
+"GET /login/ HTTP/1.1" 200 4825
+"GET /static/img/login-bg.jpg HTTP/1.1" 304 0
+"GET /login/ HTTP/1.1" 200 4825
+"GET /login/ HTTP/1.1" 200 4825
+"GET /login/ HTTP/1.1" 200 4825
+"GET /static/img/login-bg.jpg HTTP/1.1" 304 0
+"GET /login/ HTTP/1.1" 200 4825
+"GET /login/ HTTP/1.1" 200 4825
+"GET /login/ HTTP/1.1" 200 4825
+"GET /login/ HTTP/1.1" 200 4825
+"GET /login/ HTTP/1.1" 200 4825
+Watching for file changes with StatReloader
+"GET /login/ HTTP/1.1" 200 4977
+"GET /login/ HTTP/1.1" 200 5559
+"GET /static/img/DSC04043-retouche-scaled-1.jpg HTTP/1.1" 200 411358
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 2, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45836
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 2, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45541
+"GET /admin/ HTTP/1.1" 200 12931
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/css/base.css HTTP/1.1" 200 22120
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"GET /static/img/DSC04043-retouche-scaled-1.jpg HTTP/1.1" 304 0
+"POST /login/ HTTP/1.1" 302 0
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 24281
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"GET /static/img/DSC04043-retouche-scaled-1.jpg HTTP/1.1" 304 0
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 2, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45836
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/?next=/ HTTP/1.1" 200 5559
+"GET /static/css/custom.css HTTP/1.1" 200 4248
+"GET /static/images/emsi-logo.png HTTP/1.1" 200 42389
+"GET /static/img/emsi-logo.png HTTP/1.1" 200 42389
+"GET /static/img/DSC04043-retouche-scaled-1.jpg HTTP/1.1" 200 411358
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5427
+"POST /login/?next=/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 2, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45836
+Notification request from user: aya (role: admin)
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '30', 'type': 'team'}
+Notification data: {'student_id': '30', 'type': 'team'}
+Sending email to: a.lahlou22@emi.ac.ma
+Sending email to: a.lahlou22@emi.ac.ma
+Email sent successfully
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Notification request from user: aya (role: admin)
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '21', 'type': 'team'}
+Notification data: {'student_id': '21', 'type': 'team'}
+Sending email to: a.alami23@emi.ac.ma
+Sending email to: a.alami23@emi.ac.ma
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21667
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"GET /password-reset/ HTTP/1.1" 200 3337
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21681
+"GET /profile/ HTTP/1.1" 200 7732
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21375
+"GET /projects/1/ HTTP/1.1" 200 7173
+Internal Server Error: /projects/1/submit/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: submit_project() got an unexpected keyword argument 'project_id'
+"GET /projects/1/submit/ HTTP/1.1" 500 69385
+"GET /projects/2/ HTTP/1.1" 200 6899
+"GET /projects/3/ HTTP/1.1" 200 6889
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 2, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 45836
+"GET /teams/4/ HTTP/1.1" 200 7510
+"POST /teams/4/approve/ HTTP/1.1" 302 0
+"GET /teams/ HTTP/1.1" 200 16047
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21667
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21361
+"GET /teams/5/reports/ HTTP/1.1" 200 6000
+"GET /teams/5/reports/ HTTP/1.1" 200 6000
+"GET /teams/5/ HTTP/1.1" 200 8269
+Internal Server Error: /teams/5/messages/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "F:\PFA2\pfa_teams\views.py", line 382, in team_messages
+    if request.user != team.supervisor:
+                       ^^^^^^^^^^^^^^^
+AttributeError: 'Team' object has no attribute 'supervisor'
+"GET /teams/5/messages/ HTTP/1.1" 500 73320
+F:\PFA2\users\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_teams\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/?next=/ HTTP/1.1" 200 5559
+"GET /static/css/custom.css HTTP/1.1" 200 4248
+"GET /static/img/emsi-logo.png HTTP/1.1" 200 42389
+"GET /static/images/emsi-logo.png HTTP/1.1" 200 42389
+"GET /static/img/DSC04043-retouche-scaled-1.jpg HTTP/1.1" 200 411358
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5427
+"POST /login/?next=/ HTTP/1.1" 200 6442
+"POST /login/?next=/ HTTP/1.1" 200 6442
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\admin.py changed, reloading.
+D:\PFA2\pfa_projects\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\urls.py changed, reloading.
+D:\PFA2\pfa_projects\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\admin.py changed, reloading.
+D:\PFA2\pfa_projects\admin.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\urls.py changed, reloading.
+D:\PFA2\pfa_projects\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\users\views.py changed, reloading.
+D:\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\users\views.py changed, reloading.
+D:\PFA2\users\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: 'user.received_project_messages.filter.is_read=False.count'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\PFA2\users\views.py", line 207, in login_view
+    return render(request, 'users/login.html', {
+        'form': form,
+        'title': 'Connexion'
+    })
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 961, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 894, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\smartif.py", line 182, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 897, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '=False.count' from 'user.received_project_messages.filter.is_read=False.count'
+"GET /login/?next=/ HTTP/1.1" 500 263676
+Watching for file changes with StatReloader
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 1035, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'message_tags'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\PFA2\users\views.py", line 207, in login_view
+    return render(request, 'users/login.html', {
+        'form': form,
+        'title': 'Connexion'
+    })
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 1097, in load
+    lib = find_library(parser, name)
+  File "C:\Users\field\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 1037, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: 'message_tags' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+cache
+crispy_forms_field
+crispy_forms_filters
+crispy_forms_tags
+crispy_forms_utils
+i18n
+l10n
+log
+static
+tz
+"GET /login/?next=/ HTTP/1.1" 500 213654
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/?next=/ HTTP/1.1" 200 5559
+"POST /login/?next=/ HTTP/1.1" 200 6444
+"POST /login/?next=/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 21
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 9
+Final stats for chart: {'total_students': 21, 'total_teachers': 2, 'total_teams': 10, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 9}
+"GET / HTTP/1.1" 200 46108
+Notification request from user: aya (role: admin)
+Notification request from user: aya (role: admin)
+Notification data: {'student_id': '21', 'type': 'team'}
+Notification data: {'student_id': '21', 'type': 'team'}
+Sending email to: a.alami23@emi.ac.ma
+Sending email to: a.alami23@emi.ac.ma
+Email sent successfully
+Email sent successfully
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"POST /api/send-notification/ HTTP/1.1" 200 17
+"GET /teams/1/ HTTP/1.1" 200 7095
+"GET /projects/messages/inbox/ HTTP/1.1" 200 6088
+"GET /projects/messages/compose/ HTTP/1.1" 200 12525
+"GET /projects/messages/inbox/ HTTP/1.1" 200 6088
+"GET /projects/messages/compose/ HTTP/1.1" 200 12525
+"POST /projects/messages/compose/ HTTP/1.1" 200 12559
+"POST /projects/messages/compose/ HTTP/1.1" 200 12559
+"POST /projects/messages/compose/ HTTP/1.1" 200 12559
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /projects/messages/compose/ HTTP/1.1" 200 13073
+"POST /projects/messages/compose/ HTTP/1.1" 200 13073
+"POST /projects/messages/compose/ HTTP/1.1" 200 13073
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+"POST /projects/messages/compose/ HTTP/1.1" 200 13357
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+D:\PFA2\pfa_projects\forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /projects/messages/compose/ HTTP/1.1" 302 0
+"GET /projects/messages/inbox/ HTTP/1.1" 200 6088
+"GET /projects/messages/sent/ HTTP/1.1" 200 9166
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6611
+"POST /login/ HTTP/1.1" 200 6450
+Watching for file changes with StatReloader
+"POST /login/ HTTP/1.1" 200 6450
+"POST /login/ HTTP/1.1" 200 6450
+"POST /login/ HTTP/1.1" 200 6450
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 25131
+"GET /projects/messages/inbox/ HTTP/1.1" 200 9847
+"GET /projects/messages/compose/ HTTP/1.1" 200 11244
+"POST /projects/messages/compose/ HTTP/1.1" 302 0
+"GET /projects/messages/inbox/ HTTP/1.1" 200 9847
+"GET /projects/messages/sent/ HTTP/1.1" 200 9168
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6611
+Forbidden (CSRF token from POST incorrect.): /login/
+"POST /login/?next=/ HTTP/1.1" 403 2526
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden (CSRF cookie not set.): /login/
+"POST /login/?next=/ HTTP/1.1" 403 2971
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+D:\PFA2\pfa_management\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /login/?next=/ HTTP/1.1" 200 6449
+"POST /login/?next=/ HTTP/1.1" 200 6449
+"POST /login/?next=/ HTTP/1.1" 302 0
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 23188
+"GET /projects/messages/inbox/ HTTP/1.1" 200 10158
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+D:\PFA2\pfa_projects\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+D:\PFA2\pfa_projects\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+"GET /projects/messages/inbox/ HTTP/1.1" 200 13483
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+"GET /projects/messages/inbox/ HTTP/1.1" 200 13483
+"GET /projects/messages/3/ HTTP/1.1" 200 10178
+"POST /projects/messages/3/ HTTP/1.1" 302 0
+"GET /projects/messages/3/ HTTP/1.1" 200 10492
+"GET /projects/messages/inbox/ HTTP/1.1" 200 13459
+"GET /projects/messages/sent/ HTTP/1.1" 200 9269
+"GET /projects/messages/4/ HTTP/1.1" 200 7780
+"GET /projects/messages/inbox/ HTTP/1.1" 200 13459
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+Watching for file changes with StatReloader
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21593
+"GET /static/css/custom.css HTTP/1.1" 200 4248
+"GET /static/images/emsi-logo.png HTTP/1.1" 200 42389
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5427
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"GET /static/img/emsi-logo.png HTTP/1.1" 200 42389
+"GET /static/img/DSC04043-retouche-scaled-1.jpg HTTP/1.1" 200 411358
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 26
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 14
+Final stats for chart: {'total_students': 26, 'total_teachers': 2, 'total_teams': 11, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 14}
+"GET / HTTP/1.1" 200 53977
+"GET /projects/messages/inbox/ HTTP/1.1" 200 6088
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 26
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 14
+Final stats for chart: {'total_students': 26, 'total_teachers': 2, 'total_teams': 11, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 14}
+"GET / HTTP/1.1" 200 53682
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 25172
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 24866
+"GET /projects/messages/inbox/ HTTP/1.1" 200 9927
+Watching for file changes with StatReloader
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 24866
+"GET /static/css/custom.css HTTP/1.1" 200 4248
+"GET /static/images/emsi-logo.png HTTP/1.1" 200 42389
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5427
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"GET /static/img/emsi-logo.png HTTP/1.1" 200 42389
+"GET /static/img/DSC04043-retouche-scaled-1.jpg HTTP/1.1" 200 411358
+"GET /login HTTP/1.1" 301 0
+"GET /login/ HTTP/1.1" 200 5559
+"GET /password-reset/ HTTP/1.1" 200 3337
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 26
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 14
+Final stats for chart: {'total_students': 26, 'total_teachers': 2, 'total_teams': 11, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 14}
+"GET / HTTP/1.1" 200 53977
+"GET /projects/messages/inbox/ HTTP/1.1" 200 6088
+"GET /projects/messages/compose/ HTTP/1.1" 200 13012
+"GET /admin/ HTTP/1.1" 200 17694
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 16632
+"GET /static/admin/css/base.css HTTP/1.1" 200 22154
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /profile/ HTTP/1.1" 200 5525
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 25172
+"GET /projects/messages/inbox/ HTTP/1.1" 200 9927
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 24866
+Internal Server Error: /projects/1/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: project_detail() got an unexpected keyword argument 'project_id'
+"GET /projects/1/ HTTP/1.1" 500 68943
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: admin
+User is_superuser: True
+User is_staff: True
+Total students: 26
+Students with accepted requests: 12
+Students with pending requests: 0
+Students without requests: 14
+Final stats for chart: {'total_students': 26, 'total_teachers': 2, 'total_teams': 11, 'total_projects': 4, 'pending_requests': 0, 'students_accepted': 12, 'students_pending': 0, 'students_without_requests': 14}
+"GET / HTTP/1.1" 200 53977
+"GET /teams/6/ HTTP/1.1" 200 7776
+"GET /teams/3/ HTTP/1.1" 200 7786
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21899
+Internal Server Error: /projects/1/
+Traceback (most recent call last):
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\msi\AppData\Local\Programs\Python\Python313-32\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: project_detail() got an unexpected keyword argument 'project_id'
+"GET /projects/1/ HTTP/1.1" 500 68943
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 21593
+"GET /projects/messages/inbox/ HTTP/1.1" 200 5848
+"GET /projects/messages/inbox/ HTTP/1.1" 200 5848
+"GET /projects/messages/sent/ HTTP/1.1" 200 5264
+"GET /projects/messages/inbox/ HTTP/1.1" 200 5848
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 25172
+"GET /projects/messages/inbox/ HTTP/1.1" 200 9927
+"GET /projects/messages/4/ HTTP/1.1" 200 9465
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 302 0
+User role: student
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 24950
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+"POST /login/ HTTP/1.1" 200 6449
+- Broken pipe from ('127.0.0.1', 49995)
+"POST /login/ HTTP/1.1" 200 6449
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /login/?next=/ HTTP/1.1" 200 5559
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5427
+"POST /login/?next=/ HTTP/1.1" 302 0
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 23188
+"GET /projects/messages/inbox/ HTTP/1.1" 200 13459
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+Internal Server Error: /projects/4/
+Traceback (most recent call last):
+  File "C:\Users\field\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: project_detail() got an unexpected keyword argument 'project_id'
+"GET /projects/4/ HTTP/1.1" 500 66892
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /projects/3/
+Traceback (most recent call last):
+  File "C:\Users\field\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\field\AppData\Local\Programs\Python\Python311\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: project_detail() got an unexpected keyword argument 'project_id'
+"GET /projects/3/ HTTP/1.1" 500 66892
+D:\PFA2\pfa_projects\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /projects/3/ HTTP/1.1" 200 5742
+"GET /projects/3/ HTTP/1.1" 200 5742
+"GET /teams/?project_id=3 HTTP/1.1" 200 7530
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /logout/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 6185
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"POST /login/ HTTP/1.1" 302 0
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 23188
+User role: teacher
+User is_superuser: False
+User is_staff: False
+"GET / HTTP/1.1" 200 22880
+"GET /projects/messages/inbox/ HTTP/1.1" 200 13459
+"GET /projects/messages/compose/ HTTP/1.1" 200 12794
+"GET /projects/ HTTP/1.1" 200 9200

@@ -1,0 +1,139 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$hashed_password$",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "prof1",
+            "first_name": "Jean",
+            "last_name": "Dupont",
+            "email": "prof1@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-05-29T10:00:00Z",
+            "role": "teacher"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$hashed_password$",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "etudiant1",
+            "first_name": "Alice",
+            "last_name": "Martin",
+            "email": "etudiant1@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-05-29T10:00:00Z",
+            "role": "student"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$hashed_password$",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "etudiant2",
+            "first_name": "Bob",
+            "last_name": "Dubois",
+            "email": "etudiant2@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-05-29T10:00:00Z",
+            "role": "student"
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$hashed_password$",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "etudiant3",
+            "first_name": "Claire",
+            "last_name": "Petit",
+            "email": "etudiant3@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-05-29T10:00:00Z",
+            "role": "student"
+        }
+    },
+    {
+        "model": "users.studentprofile",
+        "pk": 1,
+        "fields": {
+            "user": 2,
+            "student_id": "STU001",
+            "department": "Informatique",
+            "level": "Master 2"
+        }
+    },
+    {
+        "model": "users.studentprofile",
+        "pk": 2,
+        "fields": {
+            "user": 3,
+            "student_id": "STU002",
+            "department": "Informatique",
+            "level": "Master 2"
+        }
+    },
+    {
+        "model": "users.studentprofile",
+        "pk": 3,
+        "fields": {
+            "user": 4,
+            "student_id": "STU003",
+            "department": "Informatique",
+            "level": "Master 2"
+        }
+    },
+    {
+        "model": "pfa_projects.project",
+        "pk": 1,
+        "fields": {
+            "title": "Système de gestion des PFA",
+            "description": "Développement d'une application web pour la gestion des projets de fin d'année, incluant la formation des équipes, le suivi des projets et la soumission des livrables.",
+            "supervisor": 1,
+            "status": "available",
+            "created_at": "2025-05-29T10:00:00Z",
+            "deadline": "2025-07-15",
+            "requirements": "Django, Python, HTML/CSS, JavaScript"
+        }
+    },
+    {
+        "model": "pfa_projects.project",
+        "pk": 2,
+        "fields": {
+            "title": "Application mobile de covoiturage",
+            "description": "Développement d'une application mobile permettant aux étudiants de partager leurs trajets pour se rendre à l'université.",
+            "supervisor": 1,
+            "status": "available",
+            "created_at": "2025-05-29T10:00:00Z",
+            "deadline": "2025-07-15",
+            "requirements": "React Native, Node.js, MongoDB"
+        }
+    },
+    {
+        "model": "pfa_projects.project",
+        "pk": 3,
+        "fields": {
+            "title": "Plateforme d'apprentissage en ligne",
+            "description": "Création d'une plateforme e-learning avec des fonctionnalités de cours en ligne, quiz et suivi des progrès.",
+            "supervisor": 1,
+            "status": "available",
+            "created_at": "2025-05-29T10:00:00Z",
+            "deadline": "2025-07-15",
+            "requirements": "Vue.js, Laravel, MySQL"
+        }
+    }
+] 

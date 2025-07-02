@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}Statistiques des PFA{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h2 class="mb-0">Statistiques des PFA</h2>
+                    <a href="{% url 'pfa_projects:export_statistics' %}" class="btn btn-success">
+                        <i class="fas fa-file-excel"></i> Exporter en Excel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Statistiques générales -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h3 class="mb-0">Vue d'ensemble</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Projets Total</h5>
+                                    <h2 class="mb-0">{{ stats.total_projects }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-success text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Équipes Total</h5>
+                                    <h2 class="mb-0">{{ stats.total_teams }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive mt-3">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Projets disponibles</td>
+                                    <td class="text-end">{{ stats.available_projects }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Projets assignés</td>
+                                    <td class="text-end">{{ stats.assigned_projects }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Projets terminés</td>
+                                    <td class="text-end">{{ stats.completed_projects }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Équipes en attente</td>
+                                    <td class="text-end">{{ stats.pending_teams }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Équipes approuvées</td>
+                                    <td class="text-end">{{ stats.approved_teams }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques par département -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h3 class="mb-0">Par département</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Département</th>
+                                    <th class="text-end">Total</th>
+                                    <th class="text-end">Avec équipe</th>
+                                    <th class="text-end">Sans équipe</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for dept in department_stats %}
+                                <tr>
+                                    <td>{{ dept.department }}</td>
+                                    <td class="text-end">{{ dept.total_students }}</td>
+                                    <td class="text-end">{{ dept.with_team }}</td>
+                                    <td class="text-end">{{ dept.without_team }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Statistiques des soumissions -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">État des soumissions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for stat in submission_stats %}
+                        <div class="col-md-3 mb-3">
+                            <div class="card {% if stat.status == 'approved' %}bg-success{% elif stat.status == 'pending' %}bg-warning{% elif stat.status == 'rejected' %}bg-danger{% else %}bg-info{% endif %} text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ stat.status|title }}</h5>
+                                    <h2 class="mb-0">{{ stat.count }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+.bg-primary {
+    background-color: #007bff !important;
+}
+
+.bg-success {
+    background-color: #28a745 !important;
+}
+
+.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.bg-info {
+    background-color: #17a2b8 !important;
+}
+</style>
+{% endblock %} 

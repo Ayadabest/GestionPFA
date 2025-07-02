@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Nouveau message{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0">
+                            <i class="fas fa-edit"></i> Nouveau message
+                        </h3>
+                        <a href="{% url 'pfa_projects:inbox' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left"></i> Retour
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <!-- Champ caché pour le type de message -->
+                        <input type="hidden" name="message_type" value="{{ form.message_type.initial|default:form.message_type.value|default:'student_to_teacher' }}" id="{{ form.message_type.id_for_label }}">
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ form.recipient|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ form.project|as_crispy_field }}
+                            </div>
+                        </div>
+                        
+                        {{ form.subject|as_crispy_field }}
+                        {{ form.content|as_crispy_field }}
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.attachment.id_for_label }}" class="form-label">
+                                <i class="fas fa-paperclip"></i> Pièce jointe (optionnel)
+                            </label>
+                            {{ form.attachment }}
+                            {% if form.attachment.help_text %}
+                                <div class="form-text">{{ form.attachment.help_text }}</div>
+                            {% endif %}
+                            {% if form.attachment.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.attachment.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-secondary" onclick="history.back()">
+                                <i class="fas fa-times"></i> Annuler
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Envoyer le message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Prévisualisation du fichier sélectionné
+    document.getElementById('{{ form.attachment.id_for_label }}').addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const fileInfo = document.createElement('div');
+            fileInfo.className = 'mt-2 p-2 bg-light rounded';
+            fileInfo.innerHTML = `
+                <i class="fas fa-file"></i> ${file.name} (${(file.size / 1024).toFixed(1)} KB)
+            `;
+            
+            // Supprimer l'ancienne info si elle existe
+            const oldInfo = this.parentNode.querySelector('.bg-light');
+            if (oldInfo) {
+                oldInfo.remove();
+            }
+            
+            this.parentNode.appendChild(fileInfo);
+        }
+    });
+    
+    // Validation en temps réel
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const subject = document.getElementById('{{ form.subject.id_for_label }}').value.trim();
+        const content = document.getElementById('{{ form.content.id_for_label }}').value.trim();
+        const recipient = document.getElementById('{{ form.recipient.id_for_label }}').value;
+        
+        if (!subject) {
+            e.preventDefault();
+            alert('Veuillez saisir un sujet pour votre message.');
+            return false;
+        }
+        
+        if (!content) {
+            e.preventDefault();
+            alert('Veuillez saisir le contenu de votre message.');
+            return false;
+        }
+        
+        if (!recipient) {
+            e.preventDefault();
+            alert('Veuillez sélectionner un destinataire.');
+            return false;
+        }
+    });
+</script>
+{% endblock %} 

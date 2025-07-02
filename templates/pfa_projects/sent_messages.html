@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Messages envoyés{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>
+                    <i class="fas fa-paper-plane"></i> Messages envoyés
+                </h2>
+                <div>
+                    <a href="{% url 'pfa_projects:compose_message' %}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Nouveau message
+                    </a>
+                    <a href="{% url 'pfa_projects:inbox' %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-inbox"></i> Boîte de réception
+                    </a>
+                </div>
+            </div>
+
+            {% if messages %}
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Destinataire</th>
+                                        <th>Sujet</th>
+                                        <th>Projet</th>
+                                        <th>Date</th>
+                                        <th>Statut</th>
+                                        <th width="100">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for message in messages %}
+                                    <tr>
+                                        <td>
+                                            <strong>{{ message.recipient.get_full_name|default:message.recipient.username }}</strong>
+                                            <br>
+                                            <small class="text-muted">{{ message.recipient.get_role_display }}</small>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'pfa_projects:view_message' message.id %}" class="text-decoration-none">
+                                                {{ message.subject }}
+                                            </a>
+                                            {% if message.attachment %}
+                                                <i class="fas fa-paperclip text-muted ml-1"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if message.project %}
+                                                <span class="badge bg-info">{{ message.project.title|truncatechars:30 }}</span>
+                                            {% else %}
+                                                <span class="text-muted">-</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">
+                                                {{ message.sent_at|date:"d/m/Y H:i" }}
+                                            </small>
+                                        </td>
+                                        <td>
+                                            {% if message.is_read %}
+                                                <span class="badge bg-success">
+                                                    <i class="fas fa-check"></i> Lu
+                                                </span>
+                                            {% else %}
+                                                <span class="badge bg-warning">
+                                                    <i class="fas fa-clock"></i> Non lu
+                                                </span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <a href="{% url 'pfa_projects:view_message' message.id %}" 
+                                                   class="btn btn-outline-primary" 
+                                                   title="Voir le message">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="{% url 'pfa_projects:delete_message' message.id %}" 
+                                                   class="btn btn-outline-danger" 
+                                                   title="Supprimer"
+                                                   onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?')">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-paper-plane fa-3x text-muted mb-3"></i>
+                    <h4 class="text-muted">Aucun message envoyé</h4>
+                    <p class="text-muted">Vous n'avez pas encore envoyé de messages.</p>
+                    <a href="{% url 'pfa_projects:compose_message' %}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Écrire un message
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

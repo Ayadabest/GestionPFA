@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Demande de binôme{% endblock %}
+
+{% block content %}
+<div style="padding: 20px;">
+    <h2>Demande de binôme</h2>
+
+    <!-- Affichage simple des projets disponibles -->
+    <div style="margin: 20px 0; padding: 10px; border: 1px solid #ccc;">
+        <h3>Projets disponibles :</h3>
+        <ul>
+        {% for project in available_projects %}
+            <li>{{ project.title }}</li>
+        {% empty %}
+            <li>Aucun projet disponible</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    {% if team_request.status == 'pending' %}
+    <form method="post">
+        {% csrf_token %}
+        
+        <div style="margin: 20px 0;">
+            <label for="project">Sélectionner un projet :</label>
+            <select name="project" id="project" required style="width: 100%; padding: 5px; margin: 10px 0;">
+                <option value="">-- Choisir un projet --</option>
+                {% for project in available_projects %}
+                <option value="{{ project.id }}">{{ project.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <button type="submit" name="action" value="accept" style="background: green; color: white; padding: 10px; border: none; margin-right: 10px;">
+                Approuver
+            </button>
+            <button type="submit" name="action" value="reject" style="background: red; color: white; padding: 10px; border: none;">
+                Rejeter
+            </button>
+        </div>
+    </form>
+    {% else %}
+    <p>Cette demande a déjà été traitée.</p>
+    {% endif %}
+</div>
+{% endblock %} 

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Liste des projets{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Liste des projets</h2>
+        {% if user.role == 'admin' %}
+        <a href="{% url 'pfa_projects:project_create' %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Créer un projet
+        </a>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Filtres</h5>
+                </div>
+                <div class="card-body">
+                    <form method="get">
+                        <div class="mb-3">
+                            <label class="form-label">Statut</label>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="status" value="open" {% if 'open' in selected_status %}checked{% endif %}>
+                                <label class="form-check-label">Ouvert</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="status" value="in_progress" {% if 'in_progress' in selected_status %}checked{% endif %}>
+                                <label class="form-check-label">En cours</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" name="status" value="completed" {% if 'completed' in selected_status %}checked{% endif %}>
+                                <label class="form-check-label">Terminé</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm w-100">Appliquer les filtres</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            {% if projects %}
+                <div class="row">
+                    {% for project in projects %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">{{ project.title }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{ project.description|truncatewords:30 }}</p>
+                                    <p class="card-text">
+                                        <strong>Encadrant :</strong> {{ project.supervisor.get_full_name }}<br>
+                                        <strong>Date limite :</strong> {{ project.deadline|date:"d/m/Y" }}<br>
+                                        <strong>Statut :</strong> 
+                                        {% if project.status == 'available' %}
+                                            <span class="badge bg-success">Disponible</span>
+                                        {% elif project.status == 'assigned' %}
+                                            <span class="badge bg-warning">Attribué</span>
+                                        {% elif project.status == 'in_progress' %}
+                                            <span class="badge bg-info">En cours</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">Terminé</span>
+                                        {% endif %}
+                                    </p>
+                                    
+                                    <div class="mt-3">
+                                        <a href="{% url 'pfa_projects:project_detail' project.id %}" class="btn btn-info btn-sm">
+                                            <i class="fas fa-info-circle"></i> Détails
+                                        </a>
+                                        {% if user.role == 'admin' %}
+                                        <a href="{% url 'pfa_projects:project_edit' project.id %}" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-edit"></i> Modifier
+                                        </a>
+                                        <a href="{% url 'pfa_projects:project_delete' project.id %}" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i> Supprimer
+                                        </a>
+                                        {% elif user.role == 'student' and not user.teams.exists %}
+                                        <a href="{% url 'pfa_teams:send_request_project' project.id %}" class="btn btn-sm btn-primary">
+                                            Envoyer une demande
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-info">
+                    Aucun projet ne correspond à vos critères de recherche.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

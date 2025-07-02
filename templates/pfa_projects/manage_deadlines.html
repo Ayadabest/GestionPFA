@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Gérer les échéances - {{ project.title }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Gérer les échéances - {{ project.title }}</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Titre</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="due_date" class="form-label">Date limite</label>
+                            <input type="datetime-local" class="form-control" id="due_date" name="due_date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deadline_type" class="form-label">Type</label>
+                            <select class="form-select" id="deadline_type" name="deadline_type" required>
+                                <option value="">Sélectionnez un type</option>
+                                <option value="report">Rapport</option>
+                                <option value="presentation">Présentation</option>
+                                <option value="demo">Démonstration</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter l'échéance</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Échéances existantes</h5>
+                </div>
+                <div class="card-body">
+                    {% if deadlines %}
+                    <div class="list-group">
+                        {% for deadline in deadlines %}
+                        <div class="list-group-item">
+                            <h6 class="mb-1">{{ deadline.title }}</h6>
+                            <p class="mb-1"><small>{{ deadline.description }}</small></p>
+                            <small class="text-muted">
+                                Date limite : {{ deadline.due_date|date:"d/m/Y H:i" }}<br>
+                                Type : {{ deadline.get_deadline_type_display }}
+                            </small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p class="text-muted">Aucune échéance n'a été définie.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
+<script>
+    flatpickr("#due_date", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        locale: "fr",
+        minDate: "today"
+    });
+</script>
+{% endblock %} 

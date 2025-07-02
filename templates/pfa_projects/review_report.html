@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Évaluer le rapport - {{ report.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Évaluer le rapport</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ report.title }}</h5>
+            <p class="card-text">
+                <strong>Projet :</strong> {{ report.project.title }}<br>
+                <strong>Équipe :</strong> {{ report.team.name }}<br>
+                <strong>Date de soumission :</strong> {{ report.submission_date|date:"d/m/Y H:i" }}<br>
+                <strong>Document :</strong> <a href="{{ report.document.url }}" target="_blank" class="btn btn-sm btn-info">Télécharger le rapport</a>
+            </p>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="status" class="form-label">Statut</label>
+                    <select class="form-select" id="status" name="status" required>
+                        <option value="">Sélectionnez un statut</option>
+                        <option value="reviewed">Revu</option>
+                        <option value="approved">Approuvé</option>
+                        <option value="rejected">Rejeté</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="feedback" class="form-label">Commentaires</label>
+                    <textarea class="form-control" id="feedback" name="feedback" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer l'évaluation</button>
+                <a href="{% url 'pfa_projects:project_detail' report.project.id %}" class="btn btn-secondary">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 

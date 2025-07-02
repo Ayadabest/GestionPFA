@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Soumettre un livrable - {{ project.title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Soumettre un livrable pour : {{ project.title }}</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'pfa_projects:project_detail' project.pk %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left"></i> Retour
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-upload"></i> Soumettre
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Soumissions précédentes</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                {% for submission in project.submissions.all %}
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-1">Soumission du {{ submission.submission_date|date:"d/m/Y H:i" }}</h6>
+                            {% if submission.comments %}
+                            <p class="mb-1">{{ submission.comments }}</p>
+                            {% endif %}
+                        </div>
+                        <a href="{{ submission.document.url }}" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-download"></i> Télécharger
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="list-group-item text-muted">
+                    Aucune soumission précédente.
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

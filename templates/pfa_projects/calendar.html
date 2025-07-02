@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Calendrier des échéances{% endblock %}
+
+{% block extra_css %}
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet'>
+<style>
+    .deadline-report { background-color: #4CAF50; }
+    .deadline-presentation { background-color: #2196F3; }
+    .deadline-demo { background-color: #FF9800; }
+    .deadline-other { background-color: #9C27B0; }
+    
+    .fc-event {
+        cursor: pointer;
+        color: white !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="mb-0">Calendrier des échéances</h2>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-start">
+                        <div class="me-3">
+                            <span class="badge bg-success">Rapport</span>
+                        </div>
+                        <div class="me-3">
+                            <span class="badge bg-primary">Présentation</span>
+                        </div>
+                        <div class="me-3">
+                            <span class="badge bg-warning">Démonstration</span>
+                        </div>
+                        <div>
+                            <span class="badge bg-purple">Autre</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="calendar"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/fr.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'fr',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,listWeek'
+            },
+            events: {{ events_json|safe }},
+            eventClick: function(info) {
+                if (info.event.url) {
+                    window.location.href = info.event.url;
+                }
+            }
+        });
+        calendar.render();
+    });
+</script>
+{% endblock %} 

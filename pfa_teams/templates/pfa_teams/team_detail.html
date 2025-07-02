@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Équipe {{ team.name }}</h2>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Communication</h5>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'pfa_teams:team_messages' team.id %}" class="btn btn-primary btn-block mb-2">
+                        <i class="fas fa-comments"></i> Messagerie avec l'encadrant
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Rapports et Documents</h5>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'pfa_teams:team_reports' team.id %}" class="btn btn-info btn-block mb-2">
+                        <i class="fas fa-file-alt"></i> Voir les rapports
+                    </a>
+                    {% if request.user in team.members.all %}
+                    <a href="{% url 'pfa_teams:submit_report' team.id %}" class="btn btn-success btn-block">
+                        <i class="fas fa-upload"></i> Soumettre un rapport
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Informations</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Projet :</strong> {{ team.project.title }}</p>
+                    <p><strong>Statut :</strong> {{ team.get_status_display }}</p>
+                    <p><strong>Membres :</strong></p>
+                    <ul>
+                        {% for member in team.members.all %}
+                        <li>{{ member.get_full_name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

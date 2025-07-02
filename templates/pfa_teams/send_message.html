@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Envoyer un message - {{ team.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Envoyer un message à l'équipe</h2>
+                </div>
+                <div class="card-body">
+                    <h5 class="mb-4">{{ team.name }}</h5>
+                    
+                    {% if messages %}
+                        <div class="mb-4">
+                            <h6>Messages précédents</h6>
+                            <div class="messages-container" style="max-height: 300px; overflow-y: auto;">
+                                {% for message in messages %}
+                                    <div class="message {% if message.sender == user %}text-end{% endif %} mb-3">
+                                        <div class="message-content p-2 rounded {% if message.sender == user %}bg-primary text-white{% else %}bg-light{% endif %}" style="display: inline-block; max-width: 80%;">
+                                            <p class="mb-1">{{ message.content }}</p>
+                                            <small class="{% if message.sender == user %}text-white-50{% else %}text-muted{% endif %}">
+                                                {{ message.sender.get_full_name }} - {{ message.created_at|date:"d/m/Y H:i" }}
+                                            </small>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Envoyer
+                            </button>
+                            <a href="{% url 'pfa_teams:team_detail' team.pk %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Retour aux détails
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

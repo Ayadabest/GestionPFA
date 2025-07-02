@@ -1,0 +1,860 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <h2>Bienvenue, {{ request.user.get_full_name|default:request.user.username }}</h2>
+        </div>
+    </div>
+
+    {% if request.user.role == 'student' %}
+    <div class="row">
+        <!-- Mes équipes -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0">Mes équipes</h5>
+                </div>
+                <div class="card-body">
+                    {% if teams %}
+                            {% for team in teams %}
+                        <div class="mb-3">
+                            <h6>{{ team.name }}</h6>
+                            <p class="mb-1"><strong>Projet :</strong> {{ team.project.title }}</p>
+                            <p class="mb-1"><strong>Encadrant :</strong> {{ team.project.supervisor.get_full_name }}</p>
+                            <p class="mb-1"><strong>Statut :</strong> 
+                                {% if team.status == 'pending' %}
+                                    <span class="badge bg-warning">En attente</span>
+                                {% elif team.status == 'approved' %}
+                                    <span class="badge bg-success">Approuvé</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Refusé</span>
+                                {% endif %}
+                            </p>
+                            <p class="mb-1"><strong>Membres :</strong></p>
+                            <ul class="list-unstyled">
+                                {% for member in team.members.all %}
+                                    <li>{{ member.get_full_name|default:member.username }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Vous n'êtes membre d'aucune équipe.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Projets disponibles -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0">Projets disponibles</h5>
+                                    </div>
+                <div class="card-body">
+                    {% if available_projects %}
+                        {% for project in available_projects %}
+                        <div class="mb-3 p-3 border rounded">
+                            <h6>{{ project.title }}</h6>
+                            <p class="mb-1">{{ project.description|truncatewords:30 }}</p>
+                            <p class="mb-1"><strong>Superviseur :</strong> {{ project.supervisor.get_full_name }}</p>
+                            <p class="mb-1"><strong>Compétences requises :</strong> {{ project.requirements }}</p>
+                            <div class="mt-2">
+                                <a href="{% url 'pfa_projects:project_detail' project.id %}" class="btn btn-sm btn-info">
+                                    <i class="fas fa-info-circle"></i> Détails
+                                </a>
+                                {% if not teams %}
+                                    <a href="{% url 'pfa_teams:send_request_project' project.id %}" class="btn btn-sm btn-success">
+                                        <i class="fas fa-users"></i> Former une équipe
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Aucun projet disponible pour le moment.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Binômes disponibles -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0">Binômes disponibles</h5>
+                </div>
+                <div class="card-body">
+                    {% if available_students %}
+                        {% for student in available_students %}
+                        <div class="mb-3 p-3 border rounded">
+                            <h6>{{ student.get_full_name }}</h6>
+                            <p class="mb-1"><strong>Département :</strong> {{ student.studentprofile.department }}</p>
+                            <p class="mb-1"><strong>Niveau :</strong> {{ student.studentprofile.level }}</p>
+                            {% if not teams and available_projects %}
+                                <div class="mt-2">
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton{{ student.id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-user-plus"></i> Proposer un binôme
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ student.id }}">
+                                            {% for project in available_projects %}
+                                                <li>
+                                                    <form method="post" action="{% url 'pfa_teams:send_request_project' project.id %}" class="dropdown-item">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="receiver" value="{{ student.id }}">
+                                                        <button type="submit" class="btn btn-link text-decoration-none p-0">
+                                                            {{ project.title }}
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Aucun étudiant disponible pour former un binôme.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demandes de binôme reçues -->
+    {% if received_requests %}
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Demandes de binôme reçues</h5>
+                </div>
+                <div class="card-body">
+                    {% for request in received_requests %}
+                    <div class="mb-3 p-3 border rounded">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h6>Demande de {{ request.sender.get_full_name }}</h6>
+                                <p class="mb-1"><strong>Projet :</strong> {{ request.project.title }}</p>
+                                {% if request.message %}
+                                    <p class="mb-1"><strong>Message :</strong> {{ request.message }}</p>
+                                {% endif %}
+                            </div>
+                            {% if request.status == 'pending' %}
+                            <div>
+                                <form method="post" action="{% url 'pfa_teams:handle_request' request.id %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" name="action" value="accept" class="btn btn-success btn-sm">
+                                        <i class="fas fa-check"></i> Accepter
+                                    </button>
+                                    <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-times"></i> Refuser
+                                    </button>
+                                </form>
+                            </div>
+                            {% else %}
+                                <span class="badge bg-{{ request.status|yesno:'success,danger' }}">
+                                    {{ request.get_status_display }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Messagerie -->
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="fas fa-envelope"></i> Messagerie
+                        {% if unread_messages_count > 0 %}
+                            <span class="badge bg-danger">{{ unread_messages_count }}</span>
+                        {% endif %}
+                    </h5>
+                    <div>
+                        <a href="{% url 'pfa_projects:compose_message' %}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-plus"></i> Nouveau message
+                        </a>
+                        <a href="{% url 'pfa_projects:inbox' %}" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-inbox"></i> Boîte de réception
+                        </a>
+                        <a href="{% url 'pfa_projects:sent_messages' %}" class="btn btn-outline-info btn-sm">
+                            <i class="fas fa-paper-plane"></i> Messages envoyés
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if recent_messages %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Expéditeur</th>
+                                        <th>Sujet</th>
+                                        <th>Projet</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for message in recent_messages %}
+                                    <tr class="{% if not message.is_read %}table-warning{% endif %}">
+                                        <td>
+                                            <strong>{{ message.sender.get_full_name|default:message.sender.username }}</strong>
+                                            <br>
+                                            <small class="text-muted">{{ message.sender.get_role_display }}</small>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'pfa_projects:view_message' message.id %}" class="text-decoration-none">
+                                                {% if not message.is_read %}<strong>{% endif %}
+                                                {{ message.subject|truncatechars:50 }}
+                                                {% if not message.is_read %}</strong>{% endif %}
+                                            </a>
+                                            {% if message.attachment %}
+                                                <i class="fas fa-paperclip text-muted ml-1"></i>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if message.project %}
+                                                <span class="badge bg-info">{{ message.project.title|truncatechars:20 }}</span>
+                                            {% else %}
+                                                <span class="text-muted">-</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <small class="text-muted">
+                                                {{ message.sent_at|date:"d/m/Y H:i" }}
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm">
+                                                <a href="{% url 'pfa_projects:view_message' message.id %}" 
+                                                   class="btn btn-outline-primary" 
+                                                   title="Voir le message">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="{% url 'pfa_projects:compose_message' %}?reply_to={{ message.id }}" 
+                                                   class="btn btn-outline-success" 
+                                                   title="Répondre">
+                                                    <i class="fas fa-reply"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="{% url 'pfa_projects:inbox' %}" class="btn btn-outline-primary">
+                                Voir tous les messages
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-inbox fa-2x text-muted mb-3"></i>
+                            <p class="text-muted">Aucun message récent.</p>
+                            <a href="{% url 'pfa_projects:compose_message' %}" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Écrire un message
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% elif request.user.role == 'teacher' %}
+    <div class="row">
+        <!-- Statistiques -->
+        <div class="col-md-12 mb-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Projets supervisés</h6>
+                            <p class="display-4">{{ stats.total_projects }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Équipes en attente</h6>
+                            <p class="display-4">{{ stats.pending_teams_count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Équipes actives</h6>
+                            <p class="display-4">{{ stats.active_teams }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Équipes en attente d'approbation -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Équipes en attente d'approbation</h5>
+                </div>
+                <div class="card-body">
+                    {% if pending_teams %}
+                        {% for team in pending_teams %}
+                        <div class="mb-4 p-3 border rounded">
+                            <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                    <h6>{{ team.name }}</h6>
+                                    <p class="mb-1"><strong>Projet :</strong> {{ team.project.title }}</p>
+                                    <p class="mb-2"><strong>Membres :</strong></p>
+                                    <ul class="list-unstyled">
+                                        {% for member in team.members.all %}
+                                            <li>
+                                                <i class="fas fa-user"></i> 
+                                                {{ member.get_full_name|default:member.username }}
+                                                ({{ member.email }})
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    </div>
+                                {% if request.user.role == 'admin' %}
+                                    <div>
+                                        <form method="post" action="{% url 'users:approve_team' team.id %}" class="d-flex gap-2">
+                                            {% csrf_token %}
+                                            <button type="submit" name="action" value="approve" class="btn btn-success">
+                                                <i class="fas fa-check"></i> Approuver
+                                            </button>
+                                            <button type="submit" name="action" value="reject" class="btn btn-danger">
+                                                <i class="fas fa-times"></i> Refuser
+                                            </button>
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Aucune équipe en attente d'approbation.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Rapports récents -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Rapports récents</h5>
+                </div>
+                <div class="card-body">
+                    {% if recent_reports %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Équipe</th>
+                                        <th>Projet</th>
+                                        <th>Date de soumission</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for report in recent_reports %}
+                                    <tr>
+                                        <td>{{ report.team.name }}</td>
+                                        <td>{{ report.team.project.title }}</td>
+                                        <td>{{ report.submitted_at|date:"d/m/Y H:i" }}</td>
+                                        <td>
+                                            <a href="{{ report.file.url }}" class="btn btn-sm btn-primary" target="_blank">
+                                                <i class="fas fa-download"></i> Télécharger
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p>Aucun rapport récent.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Mes projets -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Mes projets</h5>
+                    <a href="{% url 'pfa_projects:project_create' %}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus"></i> Nouveau projet
+                    </a>
+                </div>
+                <div class="card-body">
+                    {% if supervised_projects %}
+                        {% for project in supervised_projects %}
+                        <div class="mb-4 p-3 border rounded">
+                            <h6>{{ project.title }}</h6>
+                            <p>{{ project.description|truncatewords:50 }}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Statut :</strong> 
+                                        <span class="badge bg-{{ project.status|yesno:'success,warning' }}">
+                                            {{ project.get_status_display }}
+                                        </span>
+                                    </p>
+                                    <p><strong>Date limite :</strong> {{ project.deadline|date:"d/m/Y" }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Équipes assignées :</strong> {{ project.team_set.count }}</p>
+                                    <p><strong>Compétences requises :</strong> {{ project.requirements }}</p>
+                                </div>
+                            </div>
+                            <div class="mt-2 d-flex gap-2">
+                                <a href="{% url 'pfa_projects:project_detail' project.id %}" class="btn btn-info btn-sm">
+                                    <i class="fas fa-info-circle"></i> Détails
+                                </a>
+                                <a href="{% url 'pfa_teams:team_list' %}?project_id={{ project.id }}" class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-users"></i> Voir les binômes
+                                </a>
+                                <a href="{% url 'pfa_projects:project_detail' project.id %}#reports" class="btn btn-success btn-sm">
+                                    <i class="fas fa-file-alt"></i> Voir les rapports
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Vous ne supervisez aucun projet pour le moment.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    <div class="row">
+        <!-- Vue administrateur -->
+        <div class="col-md-12 mb-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Étudiants inscrits</h6>
+                            <p class="display-4">{{ stats.total_students }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Enseignants</h6>
+                            <p class="display-4">{{ stats.total_teachers }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-info text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Projets</h6>
+                            <p class="display-4">{{ stats.total_projects }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <h6 class="card-title">Équipes</h6>
+                            <p class="display-4">{{ stats.total_teams }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagramme des étudiants -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">État des demandes de binôme</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="studentStatusChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications et deadlines -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Notifications et deadlines</h5>
+                    <button class="btn btn-primary btn-sm" id="sendNotificationsBtn">
+                        <i class="fas fa-bell"></i> Envoyer les notifications
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Étudiant</th>
+                                    <th>Statut</th>
+                                    <th>Contact</th>
+                                    <th>Action requise</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for student in students_without_requests %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ student.get_full_name }}</strong><br>
+                                        <small class="text-muted">ID: {{ student.studentprofile.student_id }}</small><br>
+                                        <small class="text-muted">Département: {{ student.studentprofile.department }}</small>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-danger">Sans binôme</span>
+                                    </td>
+                                    <td>
+                                        <i class="fas fa-envelope"></i> {{ student.email }}<br>
+                                        {% if student.studentprofile.phone %}
+                                            <i class="fas fa-phone"></i> {{ student.studentprofile.phone }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary notify-btn" 
+                                                data-student-id="{{ student.id }}" 
+                                                data-notification-type="team">
+                                            <i class="fas fa-paper-plane"></i> Notifier
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center">
+                                        Tous les étudiants ont fait leurs demandes de binôme.
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liste des demandes en attente -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-user-friends"></i> 
+                        Demandes de binôme en attente ({{ stats.pending_requests }})
+                    </h5>
+                </div>
+                <div class="card-body">
+                    {% if pending_team_requests %}
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Expéditeur</th>
+                                        <th>Destinataire</th>
+                                        <th>Projet</th>
+                                        <th>Message</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for request in pending_team_requests %}
+                                    <tr>
+                                        <td>
+                                            {{ request.created_at|date:"d/m/Y H:i" }}
+                                        </td>
+                                        <td>
+                                            <strong>{{ request.sender.get_full_name }}</strong>
+                                            <br>
+                                            <small class="text-muted">
+                                                <i class="fas fa-envelope"></i> 
+                                                {{ request.sender.email|default:"Pas d'email" }}
+                                            </small>
+                                            <br>
+                                            <small class="text-muted">
+                                                <i class="fas fa-id-card"></i> 
+                                                CNE: {{ request.sender.cne|default:"Non spécifié" }}
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <strong>{{ request.receiver.get_full_name }}</strong>
+                                            <br>
+                                            <small class="text-muted">
+                                                <i class="fas fa-envelope"></i> 
+                                                {{ request.receiver.email|default:"Pas d'email" }}
+                                            </small>
+                                            <br>
+                                            <small class="text-muted">
+                                                <i class="fas fa-id-card"></i> 
+                                                CNE: {{ request.receiver.cne|default:"Non spécifié" }}
+                                            </small>
+                                        </td>
+                                        <td>
+                                            {% if request.project %}
+                                                {{ request.project.title }}
+                                            {% else %}
+                                                <span class="text-muted">Non spécifié</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if request.message %}
+                                                {{ request.message|truncatechars:50 }}
+                                            {% else %}
+                                                <span class="text-muted">Pas de message</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <form method="post" action="{% url 'pfa_teams:handle_request' request.id %}" class="d-inline">
+                                                {% csrf_token %}
+                                                <button type="submit" name="action" value="accept" class="btn btn-success btn-sm">
+                                                    <i class="fas fa-check"></i> Accepter
+                                                </button>
+                                                <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-times"></i> Refuser
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-center mb-0">Aucune demande de binôme en attente.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Liste des équipes -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Équipes ({{ stats.total_teams }})</h5>
+                </div>
+                <div class="card-body">
+                    {% if teams %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Équipe</th>
+                                        <th>Projet</th>
+                                        <th>Superviseur</th>
+                                        <th>Membres</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for team in teams %}
+                                    <tr>
+                                        <td>{{ team.name }}</td>
+                                        <td>{{ team.project.title }}</td>
+                                        <td>{{ team.project.supervisor.get_full_name }}</td>
+                                        <td>
+                                            {% for member in team.members.all %}
+                                                {{ member.get_full_name }}<br>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-{{ team.status|yesno:'success,warning' }}">
+                                                {{ team.get_status_display }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'pfa_teams:team_detail' team.id %}" class="btn btn-sm btn-info">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p>Aucune équipe.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+</div>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Configuration du diagramme
+    const ctx = document.getElementById('studentStatusChart');
+    if (ctx) {
+        console.log('Canvas found');
+        const data = {
+            labels: [
+                'Étudiants avec équipes approuvées',
+                'Étudiants en attente d\'approbation',
+                'Étudiants sans demande'
+            ],
+            datasets: [{
+                data: [
+                    {{ stats.students_accepted|default:0 }},
+                    {{ stats.students_pending|default:0 }},
+                    {{ stats.students_without_requests|default:0 }}
+                ],
+                backgroundColor: [
+                    '#28a745',  // Vert pour les étudiants avec équipes approuvées
+                    '#ffc107',  // Jaune pour les étudiants en attente
+                    '#dc3545'   // Rouge pour les étudiants sans demande
+                ]
+            }]
+        };
+        console.log('Chart data:', data);
+        
+        try {
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+            console.log('Chart created successfully');
+        } catch (error) {
+            console.error('Error creating chart:', error);
+        }
+    } else {
+        console.warn('Canvas not found');
+    }
+
+    // Gestion des notifications
+    document.querySelectorAll('.notify-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const studentId = this.dataset.studentId;
+            const notificationType = this.dataset.notificationType;
+            
+            const notificationData = {
+                studentId: studentId,
+                notificationType: notificationType
+            };
+            console.log('Sending notification:', notificationData);
+            
+            fetch('{% url "users:send_notification" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    student_id: studentId,
+                    type: notificationType
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Notification response:', data);
+                if (data.success) {
+                    alert('Notification envoyée avec succès !');
+                } else {
+                    alert('Erreur lors de l\'envoi de la notification : ' + (data.error || 'Erreur inconnue'));
+                }
+            })
+            .catch(error => {
+                console.error('Error sending notification:', error);
+                alert('Erreur lors de l\'envoi de la notification.');
+            });
+        });
+    });
+
+    // Gestion du bouton d'envoi en masse
+    const sendAllBtn = document.getElementById('sendNotificationsBtn');
+    if (sendAllBtn) {
+        sendAllBtn.addEventListener('click', function() {
+            const buttons = document.querySelectorAll('.notify-btn');
+            let sent = 0;
+            let total = buttons.length;
+            
+            console.log(`Sending ${total} notifications`);
+
+            buttons.forEach(button => {
+                const studentId = button.dataset.studentId;
+                const notificationType = button.dataset.notificationType;
+
+                fetch('{% url "users:send_notification" %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({
+                        student_id: studentId,
+                        type: notificationType
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    sent++;
+                    console.log(`Notification ${sent}/${total} sent:`, data);
+                    if (sent === total) {
+                        alert(`Toutes les notifications ont été envoyées (${sent}/${total})`);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error sending notification ${sent + 1}/${total}:`, error);
+                });
+            });
+        });
+    }
+
+    // Fonction pour récupérer le token CSRF
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+</script>
+{% endblock %}
+{% endblock %} 

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ message.subject }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <!-- Message principal -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0">
+                            <i class="fas fa-envelope"></i> {{ message.subject }}
+                        </h3>
+                        <div>
+                            <a href="{% url 'pfa_projects:inbox' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left"></i> Retour
+                            </a>
+                            <a href="{% url 'pfa_projects:delete_message' message.id %}" 
+                               class="btn btn-outline-danger"
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?')">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>De :</strong> 
+                            {{ message.sender.get_full_name|default:message.sender.username }}
+                            <span class="badge bg-secondary">{{ message.sender.get_role_display }}</span>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <strong>À :</strong> 
+                            {{ message.recipient.get_full_name|default:message.recipient.username }}
+                            <span class="badge bg-secondary">{{ message.recipient.get_role_display }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>Date :</strong> {{ message.sent_at|date:"d/m/Y à H:i" }}
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            {% if message.project %}
+                                <strong>Projet :</strong> 
+                                <span class="badge bg-info">{{ message.project.title }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    {% if message.attachment %}
+                    <div class="mb-3">
+                        <strong><i class="fas fa-paperclip"></i> Pièce jointe :</strong>
+                        <a href="{{ message.attachment.url }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-download"></i> Télécharger
+                        </a>
+                    </div>
+                    {% endif %}
+                    
+                    <hr>
+                    
+                    <div class="message-content">
+                        {{ message.content|linebreaks }}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulaire de réponse -->
+            {% if message.recipient == request.user %}
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">
+                        <i class="fas fa-reply"></i> Répondre
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ reply_form.content|as_crispy_field }}
+                        
+                        <div class="mb-3">
+                            <label for="{{ reply_form.attachment.id_for_label }}" class="form-label">
+                                <i class="fas fa-paperclip"></i> Pièce jointe (optionnel)
+                            </label>
+                            {{ reply_form.attachment }}
+                        </div>
+                        
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Envoyer la réponse
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Prévisualisation du fichier sélectionné pour la réponse
+    document.getElementById('{{ reply_form.attachment.id_for_label }}').addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const fileInfo = document.createElement('div');
+            fileInfo.className = 'mt-2 p-2 bg-light rounded';
+            fileInfo.innerHTML = `
+                <i class="fas fa-file"></i> ${file.name} (${(file.size / 1024).toFixed(1)} KB)
+            `;
+            
+            // Supprimer l'ancienne info si elle existe
+            const oldInfo = this.parentNode.querySelector('.bg-light');
+            if (oldInfo) {
+                oldInfo.remove();
+            }
+            
+            this.parentNode.appendChild(fileInfo);
+        }
+    });
+</script>
+{% endblock %} 

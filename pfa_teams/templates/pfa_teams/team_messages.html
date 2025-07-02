@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Messages - Équipe {{ team.name }}</h2>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Liste des messages -->
+            <div class="card mb-4">
+                <div class="card-body messages-container" style="max-height: 500px; overflow-y: auto;">
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="message {% if message.sender == request.user %}message-sent{% else %}message-received{% endif %} mb-3">
+                            <div class="message-header">
+                                <strong>{{ message.sender.get_full_name }}</strong>
+                                <small class="text-muted">{{ message.sent_at|date:"d/m/Y H:i" }}</small>
+                            </div>
+                            <div class="message-content">
+                                {{ message.content|linebreaks }}
+                                {% if message.attachment %}
+                                <div class="message-attachment">
+                                    <a href="{{ message.attachment.url }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-paperclip"></i> Pièce jointe
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-center text-muted">Aucun message</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Formulaire d'envoi de message -->
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" action="{% url 'send_message' team.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ message_form }}
+                        <button type="submit" class="btn btn-primary mt-3">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <!-- Informations sur l'équipe -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Informations</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Encadrant :</strong> {{ team.supervisor.get_full_name }}</p>
+                    <p><strong>Membres :</strong></p>
+                    <ul>
+                        {% for member in team.members.all %}
+                        <li>{{ member.get_full_name }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{% url 'team_detail' team.id %}" class="btn btn-outline-secondary btn-sm">
+                        Retour à l'équipe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.messages-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.message-sent {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.message-received {
+    background-color: #f8f9fa;
+    align-self: flex-start;
+}
+
+.message-header {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.message-sent .message-header {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.message-content {
+    word-wrap: break-word;
+}
+
+.message-attachment {
+    margin-top: 10px;
+}
+</style>
+{% endblock %} 

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ report.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">{{ report.title }}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <p><strong>Projet :</strong> {{ report.project.title }}</p>
+                            <p><strong>Équipe :</strong> {{ report.team.name }}</p>
+                            <p><strong>Date de soumission :</strong> {{ report.submission_date|date:"d/m/Y H:i" }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Statut :</strong>
+                                {% if report.status == 'approved' %}
+                                    <span class="badge bg-success">Approuvé</span>
+                                {% elif report.status == 'rejected' %}
+                                    <span class="badge bg-danger">Rejeté</span>
+                                {% elif report.status == 'reviewed' %}
+                                    <span class="badge bg-info">Revu</span>
+                                {% else %}
+                                    <span class="badge bg-warning">En attente</span>
+                                {% endif %}
+                            </p>
+                            {% if report.feedback %}
+                                <p><strong>Feedback :</strong> {{ report.feedback }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="report-content">
+                        <h3>Contenu du rapport</h3>
+                        <div class="p-3 bg-light rounded">
+                            {{ report.content|linebreaks }}
+                        </div>
+                    </div>
+
+                    {% if report.document %}
+                        <div class="mt-4">
+                            <h3>Document joint</h3>
+                            <a href="{{ report.document.url }}" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-download"></i> Télécharger le document
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    <div class="mt-4">
+                        <a href="{% url 'pfa_projects:project_reports' report.project.id %}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Retour aux rapports
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

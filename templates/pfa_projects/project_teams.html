@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Binômes - {{ project.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Binômes - {{ project.title }}</h2>
+                </div>
+                <div class="card-body">
+                    {% if teams %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Étudiant 1</th>
+                                        <th>Étudiant 2</th>
+                                        <th>Date de création</th>
+                                        <th>Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for team in teams %}
+                                    <tr>
+                                        <td>{{ team.student1.get_full_name }}</td>
+                                        <td>{{ team.student2.get_full_name }}</td>
+                                        <td>{{ team.created_at|date:"d/m/Y" }}</td>
+                                        <td>
+                                            {% if team.is_active %}
+                                                <span class="badge bg-success">Actif</span>
+                                            {% else %}
+                                                <span class="badge bg-danger">Inactif</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">
+                            Aucun binôme n'a encore été créé pour ce projet.
+                        </div>
+                    {% endif %}
+                    
+                    <div class="mt-3">
+                        <a href="{% url 'pfa_projects:project_detail' project.id %}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Retour au projet
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

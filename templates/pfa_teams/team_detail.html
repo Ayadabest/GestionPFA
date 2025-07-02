@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}{{ team.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="mb-0">{{ team.name }}</h2>
+                </div>
+                <div class="card-body">
+                    <h3>Membres de l'équipe</h3>
+                    <div class="list-group mb-4">
+                        {% for member in team.members.all %}
+                        <div class="list-group-item">
+                            <h5>{{ member.get_full_name }}</h5>
+                            <div class="badge bg-secondary">{{ member.get_role_display }}</div>
+                            {% if member.cne %}
+                            <div>CNE: {{ member.cne }}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <h3>Projet</h3>
+                    {% if team.project %}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h4>{{ team.project.title }}</h4>
+                            <p>{{ team.project.description }}</p>
+                            <p><strong>Superviseur:</strong> {{ team.project.supervisor.get_full_name }}</p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-warning">
+                        Aucun projet assigné
+                    </div>
+                    {% endif %}
+
+                    {% if subject_choices %}
+                    <div class="mb-4">
+                        <h4>Choix de sujets</h4>
+                        <div class="list-group">
+                            {% for choice in subject_choices %}
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ choice.get_priority_display }} - {{ choice.project.title }}</h5>
+                                </div>
+                                <p class="mb-1">{{ choice.motivation }}</p>
+                                <small class="text-muted">Soumis le {{ choice.created_at|date:"d/m/Y" }}</small>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Actions administratives</h3>
+                </div>
+                <div class="card-body">
+                    {% if user.role == 'admin' and team.status == 'pending' %}
+                    <form method="post" action="{% url 'pfa_teams:approve_team' team_id=team.id %}">
+                        {% csrf_token %}
+                        
+                        {% if not team.project %}
+                        <div class="mb-3">
+                            <label for="project" class="form-label">Sélectionner un projet</label>
+                            <select name="project" id="project" class="form-select" required>
+                                <option value="">-- Choisir un projet --</option>
+                                {% for project in available_projects %}
+                                <option value="{{ project.id }}">
+                                    {{ project.title }} - {{ project.supervisor.get_full_name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {% endif %}
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" name="action" value="approve" 
+                                    class="btn btn-success"
+                                    {% if not team.project %}disabled{% endif %}>
+                                Approuver
+                            </button>
+                            <button type="submit" name="action" value="reject" class="btn btn-danger">
+                                Rejeter
+                            </button>
+                        </div>
+                    </form>
+                    {% else %}
+                    <div class="alert alert-info">
+                        Statut de l'équipe : {{ team.get_status_display }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Historique</h3>
+                </div>
+                <div class="card-body">
+                    <div class="timeline">
+                        {% for event in team.history.all %}
+                        <div class="timeline-item">
+                            <div class="timeline-date">{{ event.created_at|date:"d/m/Y H:i" }}</div>
+                            <div class="timeline-content">
+                                <strong>{{ event.get_action_display }}</strong>
+                                <p>{{ event.details }}</p>
+                                <small>Par {{ event.performed_by.get_full_name }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-item {
+    padding: 10px 0;
+    border-left: 2px solid #e9ecef;
+    padding-left: 20px;
+    position: relative;
+}
+
+.timeline-item:before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 15px;
+    width: 12px;
+    height: 12px;
+    background: #007bff;
+    border-radius: 50%;
+}
+
+.timeline-date {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.timeline-content {
+    margin-top: 5px;
+}
+</style>
+{% endblock %} 
